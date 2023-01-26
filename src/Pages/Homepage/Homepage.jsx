@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import axios from 'axios';
+import React, { Fragment, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
@@ -6,14 +7,30 @@ import './Homepage.css';
 
 function Homepage() {
   const navigate = useNavigate();
+  const [daftarPahlawan, setDaftarPahlawan] = useState([]);
+  const [itWorks, setItWorks] = useState(false);
 
   React.useEffect(() => {
     document.title = 'Homepage | Netflix Clone';
+    fetchDataPahlawan();
   }, []);
+
+  const fetchDataPahlawan = async () => {
+    const { data } = await axios.get('/api/heroes');
+
+    setDaftarPahlawan(data);
+    setItWorks(true);
+  };
 
   return (
     <Fragment>
       <Header />
+      <p>{itWorks ? daftarPahlawan[1].name : null}</p>
+      <p>{itWorks ? daftarPahlawan[1].birth_year : null}</p>
+      <p>{itWorks ? daftarPahlawan[1].death_year : null}</p>
+      <p>{itWorks ? daftarPahlawan[1].description : null}</p>
+      <p>{itWorks ? daftarPahlawan[1].ascension_year : null}</p>
+      {/* <p>{daftarPahlawan[10].name}</p> */}
       <h1>Lorem ipsum dolor sit amet.</h1>
       <p className="asd">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt iure cumque modi doloremque pariatur. Possimus
@@ -21,7 +38,8 @@ function Homepage() {
       </p>
       <button
         onClick={() => {
-          navigate('/login');
+          // navigate('/login');
+          // console.log(daftarPahlawan);
         }}
       >
         Login
