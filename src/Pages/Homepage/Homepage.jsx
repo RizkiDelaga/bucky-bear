@@ -57,6 +57,13 @@ function Homepage() {
       >
         Time Picker
       </button>
+      <button
+        onClick={() => {
+          navigate('/chart');
+        }}
+      >
+        Chart
+      </button>
 
       <Button variant="primary" className="button-1">
         Primary
