@@ -6,6 +6,7 @@ import Login from './Pages/Login/Login';
 import Table from './Pages/Table/Table';
 import Timepicker from './Pages/Timepicker/Timepicker';
 import Chart from './Pages/Chart/Chart';
+import SwiperCarousel from './Pages/Swiper/Swiper';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="table" element={<Table />} />
             <Route path="timepicker" element={<Timepicker />} />
             <Route path="chart" element={<Chart />} />
+            <Route path="swiper" element={<SwiperCarousel />} />
         </Routes>
       </BrowserRouter>
     </Fragment>

@@ -64,6 +64,13 @@ function Homepage() {
       >
         Chart
       </button>
+      <button
+        onClick={() => {
+          navigate('/swiper');
+        }}
+      >
+        swiper
+      </button>
 
       <Button variant="primary" className="button-1">
         Primary

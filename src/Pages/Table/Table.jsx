@@ -1,22 +1,22 @@
+import { darken, lighten } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import React, { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { useDemoData } from '@mui/x-data-grid-generator';
 
 function Table() {
   const navigate = useNavigate();
-
   React.useEffect(() => {
-    console.log(loop());
+    // console.log(loop());
   }, []);
 
-  function loop() {
-    let arrayi = [];
-    for (let index = 0; index < 1000; index++) {
-      arrayi.push(`{ id: ${index + 1}, col1: 'Data Col 1 ${index + 1}', col2: 'Data Col 2 ${index + 1}' },`);
-    }
-    return arrayi;
-  }
+  //   function loop() {
+  //     let arrayi = [];
+  //     for (let index = 0; index < 1000; index++) {
+  //       arrayi.push(`{ id: ${index + 1}, col1: 'Data Col 1 ${index + 1}', col2: 'Data Col 2 ${index + 1}' },`);
+  //     }
+  //     return arrayi;
+  //   }
 
   const rows = [
     { id: 1, col1: 'Data Col 1 1', col2: 'Data Col 2 1' },
@@ -1028,8 +1028,33 @@ function Table() {
 
   return (
     <Fragment>
-      <div style={{ height: 700, width: '100%' }}>
-        <DataGrid rows={rows} columns={columns} components={{ Toolbar: GridToolbar }} />
+      <div
+        style={{
+          backgroundColor: 'aliceblue',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '750px',
+          width: '100%',
+        }}
+      >
+        <div style={{ backgroundColor: 'white', padding: '20px', height: '700px', maxWidth: '1000px', width: '100%' }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            components={{ Toolbar: GridToolbar }}
+            sx={{
+              border: 2,
+              borderColor: 'primary.light',
+              '& .MuiDataGrid-cell:hover': {
+                color: 'primary.main',
+              },
+              '.MuiButtonBase-root': {
+                color: 'red',
+              },
+            }}
+          />
+        </div>
       </div>
       <br />
 

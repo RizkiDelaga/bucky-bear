@@ -7,7 +7,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 function Timepicker() {
   const navigate = useNavigate();
-  const [value, setValue] = React.useState(dayjs('2022-04-07'));
+  const [value, setValue] = React.useState(dayjs());
+  const [loading, setLoading] = React.useState(true);
 
   return (
     <Fragment>
@@ -19,6 +20,7 @@ function Timepicker() {
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
+            setLoading(false);
           }}
           renderInput={(params) => <TextField {...params} />}
         />
@@ -30,11 +32,20 @@ function Timepicker() {
           value={value}
           onChange={(newValue) => {
             setValue(newValue);
+            setLoading(false);
           }}
           renderInput={(params) => <TextField {...params} />}
         />
-        <TimePicker value={value} onChange={setValue} renderInput={(params) => <TextField {...params} />} />
+        <TimePicker
+          value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
+            setLoading(false);
+          }}
+          renderInput={(params) => <TextField {...params} />}
+        />
       </LocalizationProvider>
+      <h1>{loading ? null : value.toString()}</h1>
 
       <button
         onClick={() => {
