@@ -30,7 +30,6 @@ function Homepage() {
       <p>{itWorks ? daftarPahlawan[1].death_year : null}</p>
       <p>{itWorks ? daftarPahlawan[1].description : null}</p>
       <p>{itWorks ? daftarPahlawan[1].ascension_year : null}</p>
-      {/* <p>{daftarPahlawan[10].name}</p> */}
       <h1>Lorem ipsum dolor sit amet.</h1>
       <p className="asd">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt iure cumque modi doloremque pariatur. Possimus
@@ -43,6 +42,20 @@ function Homepage() {
         }}
       >
         Login
+      </button>
+      <button
+        onClick={() => {
+          navigate('/table');
+        }}
+      >
+        Table
+      </button>
+      <button
+        onClick={() => {
+          navigate('/timepicker');
+        }}
+      >
+        Time Picker
       </button>
 
       <Button variant="primary" className="button-1">
