@@ -52,6 +52,20 @@ function Homepage() {
       </button>
       <button
         onClick={() => {
+          navigate('/TableMUISelectSortFilter');
+        }}
+      >
+        TableMUI Select Sort Filter
+      </button>
+      <button
+        onClick={() => {
+          navigate('/TableMUIOpenCell');
+        }}
+      >
+        TableMUI Open Cell
+      </button>
+      <button
+        onClick={() => {
           navigate('/timepicker');
         }}
       >

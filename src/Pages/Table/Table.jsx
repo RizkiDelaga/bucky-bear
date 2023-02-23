@@ -10,14 +10,6 @@ function Table() {
     // console.log(loop());
   }, []);
 
-  //   function loop() {
-  //     let arrayi = [];
-  //     for (let index = 0; index < 1000; index++) {
-  //       arrayi.push(`{ id: ${index + 1}, col1: 'Data Col 1 ${index + 1}', col2: 'Data Col 2 ${index + 1}' },`);
-  //     }
-  //     return arrayi;
-  //   }
-
   const rows = [
     { id: 1, col1: 'Data Col 1 1', col2: 'Data Col 2 1' },
     { id: 2, col1: 'Data Col 1 2', col2: 'Data Col 2 2' },
