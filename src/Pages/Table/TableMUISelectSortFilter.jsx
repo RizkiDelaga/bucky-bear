@@ -23,6 +23,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { useNavigate } from 'react-router-dom';
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -251,6 +252,8 @@ export default function TableMUISelectSortFilter() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const navigate = useNavigate();
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -401,6 +404,13 @@ export default function TableMUISelectSortFilter() {
           </div>
         </Paper>
       </Box>
+      <button
+        onClick={() => {
+          navigate('/');
+        }}
+      >
+        Home
+      </button>
     </div>
   );
 }

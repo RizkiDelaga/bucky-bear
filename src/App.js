@@ -9,6 +9,7 @@ import Chart from './Pages/Chart/Chart';
 import SwiperCarousel from './Pages/Swiper/Swiper';
 import TableMUISelectSortFilter from './Pages/Table/TableMUISelectSortFilter';
 import TableMUIOpenCell from './Pages/Table/TableMUIOpenCell';
+import DashboardLayout from './Pages/DashboardLayout/DashboardLayout';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="timepicker" element={<Timepicker />} />
             <Route path="chart" element={<Chart />} />
             <Route path="swiper" element={<SwiperCarousel />} />
+            <Route path="DashboardLayout" element={<DashboardLayout />} />
         </Routes>
       </BrowserRouter>
     </Fragment>

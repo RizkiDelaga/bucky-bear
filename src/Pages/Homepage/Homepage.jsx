@@ -85,6 +85,13 @@ function Homepage() {
       >
         swiper
       </button>
+      <button
+        onClick={() => {
+          navigate('/DashboardLayout');
+        }}
+      >
+        DashboardLayout
+      </button>
 
       <Button variant="primary" className="button-1">
         Primary

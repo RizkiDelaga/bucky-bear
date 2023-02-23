@@ -15,6 +15,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Menu, MenuItem, TablePagination } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { useNavigate } from 'react-router-dom';
 
 function createData(name, calories, fat, carbs, protein, price) {
   return {
@@ -203,6 +204,7 @@ const rows = [
 export default function TableMUIOpenCell() {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [page, setPage] = React.useState(0);
+  const navigate = useNavigate();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -246,6 +248,13 @@ export default function TableMUIOpenCell() {
           />
         </TableContainer>
       </Box>
+      <button
+        onClick={() => {
+          navigate('/');
+        }}
+      >
+        Home
+      </button>
     </div>
   );
 }
