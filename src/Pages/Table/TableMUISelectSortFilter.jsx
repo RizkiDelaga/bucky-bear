@@ -254,7 +254,6 @@ export default function TableMUISelectSortFilter() {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const navigate = useNavigate();
 
-
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
@@ -331,7 +330,7 @@ export default function TableMUISelectSortFilter() {
         <Paper sx={{ width: '100%', mb: 2 }}>
           <EnhancedTableToolbar numSelected={selected.length} />
           <TableContainer>
-            <Table stickyHeader  sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size={dense ? 'small' : 'medium'}>
+            <Table stickyHeader sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size={dense ? 'small' : 'medium'}>
               <EnhancedTableHead
                 numSelected={selected.length}
                 order={order}
@@ -371,7 +370,10 @@ export default function TableMUISelectSortFilter() {
                         <TableCell component="th" id={labelId} scope="row" padding="none">
                           {row.name}
                         </TableCell>
-                        <TableCell align="right">{row.calories}</TableCell>
+                        <TableCell align="right">
+                          {row.calories} <p>{row.fat}</p>
+                          <p>{row.fat}</p>
+                        </TableCell>
                         <TableCell align="right">{row.fat}</TableCell>
                         <TableCell align="right">{row.carbs}</TableCell>
                         <TableCell align="right">{row.protein}</TableCell>

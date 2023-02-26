@@ -24,6 +24,9 @@ import DraftsIcon from '@mui/icons-material/Drafts';
 import SendIcon from '@mui/icons-material/Send';
 import LogoWebsite from '../../Assets/Images/Logo.jpg';
 
+import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import LibraryAddOutlinedIcon from '@mui/icons-material/LibraryAddOutlined';
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -152,10 +155,10 @@ export default function DashboardLayout() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
-                    color: '#0D6EFD',
+                    color: '#1f305c',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <DashboardOutlinedIcon /> : <LibraryAddOutlinedIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
