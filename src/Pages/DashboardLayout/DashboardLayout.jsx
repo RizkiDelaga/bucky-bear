@@ -27,7 +27,7 @@ import LogoWebsite from '../../Assets/Images/Logo.jpg';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import LibraryAddOutlinedIcon from '@mui/icons-material/LibraryAddOutlined';
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
