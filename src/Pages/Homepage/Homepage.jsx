@@ -11,6 +11,7 @@ import StoreOutlinedIcon from '@mui/icons-material/StoreOutlined';
 import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
 import LocalAtmOutlinedIcon from '@mui/icons-material/LocalAtmOutlined';
 
+import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
@@ -51,6 +52,7 @@ import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
 import RefreshOutlinedIcon from '@mui/icons-material/RefreshOutlined';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 
 function Homepage() {
   const navigate = useNavigate();
@@ -193,6 +195,8 @@ function Homepage() {
         <RefreshOutlinedIcon />
         <EditIcon />
         <DeleteForeverIcon />
+        <MenuIcon />
+        <GroupsOutlinedIcon />
       </div>
     </Fragment>
   );

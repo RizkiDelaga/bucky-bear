@@ -14,25 +14,25 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Bar Chart',
+      text: 'Weekly financial statistics',
     },
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Today'];
 
 export const data = {
   labels,
   datasets: [
     {
-      label: 'Dataset 1',
-      data: [1, 3, 4, 6, 9, 1, 4, 8, 1],
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      label: 'Income',
+      data: [598884, 819838, 674452, 454919, 925132, 759443, 767332],
+      backgroundColor: 'rgb(31, 48, 92)',
     },
     {
-      label: 'Dataset 2',
-      data: [1, 9, 2, 7, 4, 8, 1, 7, 4],
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      label: 'Expenses',
+      data: [218828, 53563, 221413, 54946, 91714, 80128, 279408],
+      backgroundColor: 'rgb(211, 47, 47)',
     },
   ],
 };

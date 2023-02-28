@@ -11,34 +11,44 @@ import VerticalBarChart from './Chart List/VerticalBarChart';
 function Chart() {
   const navigate = useNavigate();
 
+  // #D32F2F
+  // #1F305C
   return (
     <Fragment>
-      <div style={{ height: '300px' }}>
-        <LineChart />
-      </div>
+      <div style={{ margin: '40px' }}>
+        <div style={{ height: '300px' }}>
+          <LineChart />
+        </div>
+        <br />
 
-      <div style={{ height: '300px' }}>
-        <VerticalBarChart />
-      </div>
+        <div style={{ height: '300px' }}>
+          <VerticalBarChart />
+        </div>
+        <br />
 
-      <div style={{ height: '300px' }}>
-        <HorizontalBarChart />
-      </div>
+        <div style={{ height: '300px' }}>
+          <HorizontalBarChart />
+        </div>
+        <br />
 
-      <div style={{ height: '300px' }}>
-        <StackedBarChart />
-      </div>
+        <div style={{ height: '300px' }}>
+          <StackedBarChart />
+        </div>
+        <br />
 
-      <div style={{ height: '300px' }}>
-        <AreaChart />
-      </div>
+        <div style={{ height: '300px' }}>
+          <AreaChart />
+        </div>
+        <br />
 
-      <div style={{ height: '300px' }}>
-        <PieChart />
-      </div>
+        <div style={{ height: '300px' }}>
+          <PieChart />
+        </div>
+        <br />
 
-      <div style={{ height: '300px' }}>
-        <DoughnutChart />
+        <div style={{ height: '300px' }}>
+          <DoughnutChart />
+        </div>
       </div>
 
       <br />
