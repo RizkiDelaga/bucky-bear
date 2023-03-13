@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="login" element={<Login />} />
             <Route path="table" element={<Table />} />
-            <Route path="TableMUIOpenCell" element={<TableMUIOpenCell />} />
+            <Route path="TableMUIOpenCell" element={<TableMUIOpenCell />} />  
             <Route path="TableMUISelectSortFilter" element={<TableMUISelectSortFilter />} />
             <Route path="timepicker" element={<Timepicker />} />
             <Route path="chart" element={<Chart />} />

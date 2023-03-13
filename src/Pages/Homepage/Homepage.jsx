@@ -54,6 +54,34 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 
+import LocalLaundryServiceIcon from '@mui/icons-material/LocalLaundryService';
+import DryCleaningIcon from '@mui/icons-material/DryCleaning';
+import TypeSpecimenIcon from '@mui/icons-material/TypeSpecimen';
+import InfoIcon from '@mui/icons-material/Info';
+import PaymentIcon from '@mui/icons-material/Payment';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import LightbulbCircleIcon from '@mui/icons-material/LightbulbCircle';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import PermDeviceInformationIcon from '@mui/icons-material/PermDeviceInformation';
+import DeviceUnknownIcon from '@mui/icons-material/DeviceUnknown';
+import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
+import LiveHelpIcon from '@mui/icons-material/LiveHelp';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import HourglassTopIcon from '@mui/icons-material/HourglassTop';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import QuizIcon from '@mui/icons-material/Quiz';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import CollectionsIcon from '@mui/icons-material/Collections';
+import HistoryIcon from '@mui/icons-material/History';
+import LoyaltyIcon from '@mui/icons-material/Loyalty';
+
+import LogoutIcon from '@mui/icons-material/Logout';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
 function Homepage() {
   const navigate = useNavigate();
   const [daftarPahlawan, setDaftarPahlawan] = useState([]);
@@ -73,7 +101,7 @@ function Homepage() {
 
   return (
     <Fragment>
-      <Header />
+      {/* <Header />
       <p>{itWorks ? daftarPahlawan[1].name : null}</p>
       <p>{itWorks ? daftarPahlawan[1].birth_year : null}</p>
       <p>{itWorks ? daftarPahlawan[1].death_year : null}</p>
@@ -197,6 +225,58 @@ function Homepage() {
         <DeleteForeverIcon />
         <MenuIcon />
         <GroupsOutlinedIcon />
+        <br />
+
+        <LocalLaundryServiceIcon />
+        <DryCleaningIcon />
+        <TypeSpecimenIcon />
+        <InfoIcon />
+        <PaymentIcon />
+        <ContactSupportIcon />
+        <ContactsIcon />
+        <LightbulbCircleIcon />
+        <TipsAndUpdatesIcon />
+        <PermDeviceInformationIcon />
+        <DeviceUnknownIcon />
+        <PsychologyAltIcon />
+        <LiveHelpIcon />
+        <ReceiptLongIcon />
+        <HourglassTopIcon />
+        <CheckCircleIcon />
+        <CancelIcon />
+        <DeliveryDiningIcon />
+        <LocalShippingIcon />
+        <QuizIcon />
+        <QuestionAnswerIcon />
+        <CollectionsIcon />
+        <HistoryIcon />
+        <LoyaltyIcon />
+
+        <LogoutIcon />
+        <ExitToAppIcon />
+      </div> */}
+
+      <div className="fixed-position">
+        <h1>Fixed Position</h1>
+      </div>
+
+      <div className="div-biasa">
+        <h1>Div Biasa</h1>
+      </div>
+      <div className="relative-position">
+        <h1>Relative Position</h1>
+      </div>
+
+      <div className="element-parent">
+        <div className="element-child">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, exercitationem temporibus qui placeat saepe
+            illo porro, iure explicabo, laboriosam dignissimos eos incidunt iste autem vitae quibusdam quos eaque a
+            dolor.
+          </p>
+          <h2>Lorem ipsum dolor sit.</h2>
+          <h2>Lorem</h2>
+        </div>
       </div>
     </Fragment>
   );
