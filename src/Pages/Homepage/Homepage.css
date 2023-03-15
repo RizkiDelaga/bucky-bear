@@ -11,7 +11,7 @@
     bottom: 50vh;
 }
 
-.div-biasa {
+.div-biasa1 {
     width: 600px;
     height: 400px;
     background-color: blueviolet;
@@ -30,7 +30,7 @@
     width: 600px;
     height: 1500px;
     background-color: blue;
-    margin-top: -300px;
+    /* margin-top: -300px; */
     /* margin: 20px; */
     z-index: 1000;
 }
@@ -52,4 +52,34 @@
 
 .element-child h2 {
     color: blue;
+}
+
+.div-biasa2 {
+    width: 600px;
+    height: 400px;
+    background-color: rgb(5, 224, 244);
+}
+
+.absolute-position {
+    width: 200px;
+    height: 400px;
+    background-color: aquamarine;
+    position: absolute;
+    left: 800px;
+}
+
+.div-biasa3 {
+    width: 800px;
+    height: 400px;
+    background-color: rgb(230, 1, 215);
+}
+
+
+.logo-img {
+    display: inline;
+}
+
+.flex1 {
+    background-color: aquamarine;
+    display: flex;
 }

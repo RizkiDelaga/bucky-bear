@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
 import './Homepage.css';
+import logo from '../../Assets/Images/Logo.jpg';
 
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import LibraryAddOutlinedIcon from '@mui/icons-material/LibraryAddOutlined';
@@ -81,6 +82,7 @@ import LoyaltyIcon from '@mui/icons-material/Loyalty';
 
 import LogoutIcon from '@mui/icons-material/Logout';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { Hidden } from '@mui/material';
 
 function Homepage() {
   const navigate = useNavigate();
@@ -260,8 +262,8 @@ function Homepage() {
         <h1>Fixed Position</h1>
       </div>
 
-      <div className="div-biasa">
-        <h1>Div Biasa</h1>
+      <div className="div-biasa1">
+        <h1>Div Biasa 1</h1>
       </div>
       <div className="relative-position">
         <h1>Relative Position</h1>
@@ -278,6 +280,53 @@ function Homepage() {
           <h2>Lorem</h2>
         </div>
       </div>
+
+      <div className="div-biasa2">
+        <h1>Div Biasa 2</h1>
+      </div>
+      <div className="absolute-position">
+        <h1>Absolute Position</h1>
+      </div>
+      <div className="div-biasa3">
+        <h1>Div Biasa 2</h1>
+      </div>
+
+      <hr />
+      <hr />
+      <h1>Lorem ipsum dolor sit amet</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate unde quod quia maiores voluptatum blanditiis
+        error perspiciatis nostrum minus sed voluptates quam sit, ex, architecto harum id asperiores ipsum deserunt?
+      </p>
+      <hr />
+      <br />
+
+      <div>Lorem ipsum, dolor sit amet consectetur adipisicing.</div>
+      <div>Lorem ipsum, dolor sit amet consectetur adipisicing.</div>
+      <hr />
+      <br />
+
+      <img src={logo} className="logo-img" width={100} alt="logo" />
+      <div style={{ display: 'inline' }}>
+        <h1 style={{ display: 'inline' }}>Lorem ipsum dolor sit amet</h1>
+      </div>
+      <br />
+      <hr />
+
+      <p>Lorem ipsum dolor sit.</p>
+      <h2 style={{ visibility: 'hidden' }}>Hidden</h2>
+      <p>Lorem ipsum dolor sit.</p>
+      <h2 style={{ display: 'none' }}>None</h2>
+      <p>Lorem ipsum dolor sit.</p>
+
+      <button
+        onClick={() => {
+          navigate('/login');
+        }}
+      >
+        login
+      </button>
+      
     </Fragment>
   );
 }
