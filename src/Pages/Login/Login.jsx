@@ -46,6 +46,21 @@ function Login() {
           </div>
         </div>
       </div>
+
+      <div style={{ display: 'flex' }}>
+      </div>
+
+      <div className="card-example">
+        <h1>Lorem ipsum</h1>
+        <h3>12</h3>
+      </div>
+
+      <div style={{ marginTop: '300px' }}>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id consectetur, eius libero fugit esse mollitia
+          incidunt ipsam labore est alias impedit perferendis a velit neque fugiat placeat nemo unde natus!
+        </p>
+      </div>
     </Fragment>
   );
 }
