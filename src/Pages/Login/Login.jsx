@@ -47,8 +47,7 @@ function Login() {
         </div>
       </div>
 
-      <div style={{ display: 'flex' }}>
-      </div>
+      <div style={{ display: 'flex' }}></div>
 
       <div className="card-example">
         <h1>Lorem ipsum</h1>
