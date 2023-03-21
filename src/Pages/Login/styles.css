@@ -41,7 +41,6 @@
 .card-example {
     background-color: bisque;
     width: 100%;
-    max-width: 280px;
     height: 280px;
 
     display: flex;
@@ -52,4 +51,15 @@
     
     border: 1px solid black;
     border-radius: 25px;
+}
+
+.card-alasan {
+    background-color: aliceblue;
+    height: fit-content;
+}
+
+.centerGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
