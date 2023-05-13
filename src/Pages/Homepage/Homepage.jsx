@@ -101,232 +101,73 @@ function Homepage() {
     setItWorks(true);
   };
 
+  const submitHandler = async () => {
+    try {
+      const res = await axios({
+        method: 'POST',
+        url: 'https://stg.capstone.adaptivenetworklab.org/api/member/admin-login',
+        data: {
+          username: 'regin090',
+          password: 'Georgiu!1234',
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Fragment>
-      {/* <Header />
-      <p>{itWorks ? daftarPahlawan[1].name : null}</p>
-      <p>{itWorks ? daftarPahlawan[1].birth_year : null}</p>
-      <p>{itWorks ? daftarPahlawan[1].death_year : null}</p>
-      <p>{itWorks ? daftarPahlawan[1].description : null}</p>
-      <p>{itWorks ? daftarPahlawan[1].ascension_year : null}</p>
-      <h1>Lorem ipsum dolor sit amet.</h1>
-      <p className="asd">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt iure cumque modi doloremque pariatur. Possimus
-        esse saepe harum rem atque consectetur nesciunt voluptas quibusdam, quasi ratione ut deserunt nam consequatur.
-      </p>
       <button
         onClick={() => {
-          // navigate('/login');
-          // console.log(daftarPahlawan);
+          navigate('/Login');
         }}
       >
-        Login
-      </button>
-      <button
-        onClick={() => {
-          navigate('/table');
-        }}
-      >
-        Table
-      </button>
-      <button
-        onClick={() => {
-          navigate('/TableMUISelectSortFilter');
-        }}
-      >
-        TableMUI Select Sort Filter
-      </button>
-      <button
-        onClick={() => {
-          navigate('/TableMUIOpenCell');
-        }}
-      >
-        TableMUI Open Cell
-      </button>
-      <button
-        onClick={() => {
-          navigate('/timepicker');
-        }}
-      >
-        Time Picker
-      </button>
-      <button
-        onClick={() => {
-          navigate('/chart');
-        }}
-      >
-        Chart
-      </button>
-      <button
-        onClick={() => {
-          navigate('/swiper');
-        }}
-      >
-        swiper
-      </button>
-      <button
-        onClick={() => {
-          navigate('/DashboardLayout');
-        }}
-      >
-        DashboardLayout
+        Halaman Login
       </button>
 
-      <Button variant="primary" className="button-1">
-        Primary
-      </Button>
+      <button
+        onClick={() => {
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('role');
+        }}
+      >
+        Logout
+      </button>
+
       <br />
       <br />
       <br />
-      <div>
-        <DashboardOutlinedIcon />
-        <LibraryAddOutlinedIcon />
-        <StoreOutlinedIcon />
-        <ConfirmationNumberOutlinedIcon />
-        <LocalAtmOutlinedIcon />
-
-        <AccountCircleOutlinedIcon />
-        <NotificationsActiveOutlinedIcon />
-        <NotificationsNoneOutlinedIcon />
-
-        <ArrowBackIosNewOutlinedIcon />
-        <ArrowBackOutlinedIcon />
-        <KeyboardDoubleArrowLeftOutlinedIcon />
-        <ArrowLeftOutlinedIcon />
-        <FirstPageOutlinedIcon />
-        <MoreHorizOutlinedIcon />
-        <MoreVertOutlinedIcon />
-        <MessageOutlinedIcon />
-        <EmailOutlinedIcon />
-        <SendOutlinedIcon />
-        <LocalPrintshopOutlinedIcon />
-        <ShareOutlinedIcon />
-        <StarOutlineOutlinedIcon />
-        <StarHalfOutlinedIcon />
-        <StarOutlinedIcon />
-        <LocalActivityOutlinedIcon />
-        <VisibilityOutlinedIcon />
-        <VisibilityOffOutlinedIcon />
-        <AccessTimeOutlinedIcon />
-        <CalendarMonthOutlinedIcon />
-        <ArrowDropDownOutlinedIcon />
-        <ArrowForwardIosOutlinedIcon />
-        <LocationOnOutlinedIcon />
-        <ImageOutlinedIcon />
-        <CopyrightOutlinedIcon />
-        <ContentCopyOutlinedIcon />
-        <FilterAltOutlinedIcon />
-        <FilterListOutlinedIcon />
-        <SortOutlinedIcon />
-        <SearchOutlinedIcon />
-        <AddOutlinedIcon />
-        <ErrorOutlineOutlinedIcon />
-        <ErrorOutlinedIcon />
-        <RefreshOutlinedIcon />
-        <EditIcon />
-        <DeleteForeverIcon />
-        <MenuIcon />
-        <GroupsOutlinedIcon />
-        <br />
-
-        <LocalLaundryServiceIcon />
-        <DryCleaningIcon />
-        <TypeSpecimenIcon />
-        <InfoIcon />
-        <PaymentIcon />
-        <ContactSupportIcon />
-        <ContactsIcon />
-        <LightbulbCircleIcon />
-        <TipsAndUpdatesIcon />
-        <PermDeviceInformationIcon />
-        <DeviceUnknownIcon />
-        <PsychologyAltIcon />
-        <LiveHelpIcon />
-        <ReceiptLongIcon />
-        <HourglassTopIcon />
-        <CheckCircleIcon />
-        <CancelIcon />
-        <DeliveryDiningIcon />
-        <LocalShippingIcon />
-        <QuizIcon />
-        <QuestionAnswerIcon />
-        <CollectionsIcon />
-        <HistoryIcon />
-        <LoyaltyIcon />
-
-        <LogoutIcon />
-        <ExitToAppIcon />
-      </div> */}
-
-      <div className="fixed-position">
-        <h1>Fixed Position</h1>
-      </div>
-
-      <div className="div-biasa1">
-        <h1>Div Biasa 1</h1>
-      </div>
-      <div className="relative-position">
-        <h1>Relative Position</h1>
-      </div>
-
-      <div className="element-parent">
-        <div className="element-child">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, exercitationem temporibus qui placeat saepe
-            illo porro, iure explicabo, laboriosam dignissimos eos incidunt iste autem vitae quibusdam quos eaque a
-            dolor.
-          </p>
-          <h2>Lorem ipsum dolor sit.</h2>
-          <h2>Lorem</h2>
-        </div>
-      </div>
-
-      <div className="div-biasa2">
-        <h1>Div Biasa 2</h1>
-      </div>
-      <div className="absolute-position">
-        <h1>Absolute Position</h1>
-      </div>
-      <div className="div-biasa3">
-        <h1>Div Biasa 2</h1>
-      </div>
-
-      <hr />
-      <hr />
-      <h1>Lorem ipsum dolor sit amet</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate unde quod quia maiores voluptatum blanditiis
-        error perspiciatis nostrum minus sed voluptates quam sit, ex, architecto harum id asperiores ipsum deserunt?
-      </p>
-      <hr />
       <br />
-
-      <div>Lorem ipsum, dolor sit amet consectetur adipisicing.</div>
-      <div>Lorem ipsum, dolor sit amet consectetur adipisicing.</div>
-      <hr />
-      <br />
-
-      <img src={logo} className="logo-img" width={100} alt="logo" />
-      <div style={{ display: 'inline' }}>
-        <h1 style={{ display: 'inline' }}>Lorem ipsum dolor sit amet</h1>
-      </div>
-      <br />
-      <hr />
-
-      <p>Lorem ipsum dolor sit.</p>
-      <h2 style={{ visibility: 'hidden' }}>Hidden</h2>
-      <p>Lorem ipsum dolor sit.</p>
-      <h2 style={{ display: 'none' }}>None</h2>
-      <p>Lorem ipsum dolor sit.</p>
 
       <button
         onClick={() => {
-          navigate('/login');
+          navigate('/Admin');
         }}
       >
-        login
+        Halaman Admin
       </button>
-      
+      <button
+        onClick={() => {
+          navigate('/User');
+        }}
+      >
+        Halaman User
+      </button>
+      <button
+        onClick={() => {
+          navigate('/Engineering');
+        }}
+      >
+        Halaman Engineering
+      </button>
+      <button
+        onClick={() => {
+          navigate('/PageForAllRoleType');
+        }}
+      >
+        Semua Role Bisa Mengakses Halaman Ini
+      </button>
     </Fragment>
   );
 }
