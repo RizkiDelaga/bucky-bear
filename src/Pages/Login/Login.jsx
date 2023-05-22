@@ -17,11 +17,12 @@ function Login() {
         method: 'POST',
         url: `https://stg.capstone.adaptivenetworklab.org/api/member/admin-login/`,
         data: {
-          username: data.name,
-          password: data.password,
+          username: 'regin090',
+          password: 'Georgiu!1234',
         },
       });
       console.log(res.data.data);
+      let token = res.data.token.split(' ');
       localStorage.setItem('access_token', res.data.token);
       localStorage.setItem('role', res.data.data.role);
       navigate('/');

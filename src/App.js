@@ -14,6 +14,9 @@ import Admin from './Pages/Admin';
 import Engineering from './Pages/Engineering';
 import User from './Pages/User';
 import PageForAllRoleType from './Pages/PageForAllRoleType';
+import Tickets from './Pages/Tickets';
+import CreateTickets from './Pages/CreateTickets';
+import EditTickets from './Pages/EditTickets';
 
 function App() {
 
@@ -58,7 +61,10 @@ function App() {
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage />} />
-
+            <Route path="Tickets" element={<Tickets />} />
+            <Route path="CreateTickets" element={<CreateTickets />} />
+            <Route path="EditTickets/:id" element={<EditTickets />} />
+            
             <Route element={<HandleLoginSuccessfully/>}>
               <Route path="login" element={<Login />} />
             </Route>

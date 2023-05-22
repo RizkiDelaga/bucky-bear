@@ -168,6 +168,14 @@ function Homepage() {
       >
         Semua Role Bisa Mengakses Halaman Ini
       </button>
+      <br />
+      <button
+        onClick={() => {
+          navigate('/Tickets');
+        }}
+      >
+        Tickets
+      </button>
     </Fragment>
   );
 }
