@@ -130,6 +130,14 @@ function Homepage() {
       >
         Tickets
       </button>
+
+      <button
+        onClick={() => {
+          navigate('/MultiTable');
+        }}
+      >
+        Multi Table
+      </button>
     </Fragment>
   );
 }

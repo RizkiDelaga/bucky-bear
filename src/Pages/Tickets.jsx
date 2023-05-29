@@ -45,11 +45,6 @@ const headCells = [
     numeric: false,
     label: 'Category',
   },
-  {
-    id: 'date',
-    numeric: false,
-    label: 'Date',
-  },
 ];
 
 // const dataTable = [
@@ -116,7 +111,7 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-function RowItem(props) {
+function RowItemTable1(props) {
   const [openCell, setOpenCell] = React.useState(false);
   const [data, setData] = React.useState(props.orderData);
   const [open, setOpen] = useState(false);
@@ -176,48 +171,152 @@ function RowItem(props) {
     <React.Fragment>
       <TableRow hover>
         <TableCell align="center">{props.item.id}</TableCell>
-        <TableCell align="center">{props.item.orderName}</TableCell>
-        <TableCell align="center">{props.item.orderDescription}</TableCell>
-        <TableCell
-          align="center"
-          sx={{
-            color:
-              props.item.category === 'Category 1'
-                ? 'black'
-                : props.item.category === 'Category 2'
-                ? 'red'
-                : props.item.category === 'Category 3'
-                ? '#FF8A00'
-                : props.item.category === 'Category 4'
-                ? '#1B8500'
-                : 'none',
-          }}
-        >
-          {props.item.category}
+        <TableCell align="center">{props.item.original_title}</TableCell>
+        <TableCell align="center">{props.item.overview}</TableCell>
+
+        <TableCell align="center">
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Button variant="outlined" color="secondary" size="small" onClick={() => handleDeleteClick(props.item.id)}>
+              Delete
+            </Button>
+            <Dialog open={open} onClose={handleDeleteCancel}>
+              <DialogContent sx={{ display: 'flex', justifyContent: 'center' }}>
+                <img
+                  src={WarningIcon}
+                  alt="Logo"
+                  style={{
+                    height: '75px',
+
+                    width: '80px',
+                  }}
+                />
+              </DialogContent>
+              <DialogTitleStyled>Are you sure you want to delete this item?</DialogTitleStyled>
+              <DialogActions>
+                <Button
+                  onClick={handleDeleteCancel}
+                  sx={{
+                    backgroundColor: 'grey',
+                    color: '#fff',
+                    '&:hover': {
+                      backgroundColor: 'grey',
+                    },
+                  }}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={() => {
+                    handleDeleteTickets(props.item.id);
+                    handleDeleteConfirm();
+                  }}
+                  sx={{
+                    backgroundColor: '#FF0000',
+                    color: '#fff',
+                    '&:hover': {
+                      backgroundColor: 'red',
+                    },
+                  }}
+                >
+                  Delete
+                </Button>
+              </DialogActions>
+            </Dialog>
+            <Link to={`DetailTickets/`} style={{ textDecoration: 'none', marginLeft: '8px' }}>
+              {/* <Link to={`DetailTickets/${props.item.id}`} style={{ textDecoration: 'none', marginLeft: '8px' }}> */}
+              <Button variant="outlined" size="small" color="primary">
+                View
+              </Button>
+            </Link>
+            <Link to={`/EditTickets/${props.item.id}`} style={{ textDecoration: 'none', marginLeft: '8px' }}>
+              {/* <Link to={`DetailTickets/${props.item.id}`} style={{ textDecoration: 'none', marginLeft: '8px' }}> */}
+              <Button variant="outlined" size="small" color="primary">
+                Edit
+              </Button>
+            </Link>
+
+            {/* <Link
+                to={`/tickets/${props.item.id}`}
+                style={{ textDecoration: 'none', marginLeft: theme.spacing(1) }}
+              >
+                <Button
+                  variant='outlined'
+                  color='primary'
+                  startIcon={<ViewListOutlinedIcon />}
+                >
+                  View
+                </Button>
+              </Link> */}
+          </Box>
         </TableCell>
-        <TableCell align="center">{props.item.date}</TableCell>
-        <TableCell align="center" sx={{}}>
-          <div
-            style={{
-              height: '17px',
-              width: '17px',
-              backgroundColor:
-                props.item.priority === 'Critical'
-                  ? 'red'
-                  : props.item.priority === 'High'
-                  ? 'orange'
-                  : props.item.priority === 'Medium'
-                  ? 'yellow'
-                  : props.item.priority === 'Low'
-                  ? 'green'
-                  : 'none',
-              borderRadius: '50%',
-              display: 'inline-block',
-              marginRight: '5px',
-            }}
-          ></div>
-          {props.item.priority}
-        </TableCell>
+      </TableRow>
+    </React.Fragment>
+  );
+}
+
+function RowItemTable2(props) {
+  const [openCell, setOpenCell] = React.useState(false);
+  const [data, setData] = React.useState(props.orderData);
+  const [open, setOpen] = useState(false);
+
+  function handleDeleteClick() {
+    setOpen(true);
+  }
+
+  function handleDeleteConfirm() {
+    // Perform the deletion action here
+    setOpen(false);
+  }
+
+  function handleDeleteCancel() {
+    setOpen(false);
+  }
+
+  // const handleDeleteClick = () => {
+  //   setOpen(true);
+  //   // setData((prevData) => prevData.filter((item) => item.id !== id));
+
+  //   function handleDeleteConfirm() {
+  //     // Perform the deletion action here
+  //     setOpen(false);
+  //   }
+
+  //   function handleDeleteCancel() {
+  //     setOpen(false);
+  //   }
+
+  // const handleDelete = async () => {
+  //   try {
+  //     await axios.delete(`/api/tickets/${props.item.id}`);
+  //     setTickets(prevTickets => prevTickets.filter(ticket => ticket.id !== props.item.id));
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  const handleDeleteTickets = async (id) => {
+    try {
+      const res = await axios({
+        method: 'DELETE',
+        headers: {
+          Authorization: `${localStorage.getItem('access_token')}`,
+        },
+        url: `https://643437481c5ed06c9592229a.mockapi.io/api/v1/FormOrder/${id}`,
+      });
+      console.log(res.data.data);
+      props.getAllTickets();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <React.Fragment>
+      <TableRow hover>
+        <TableCell align="center">{props.item.id}</TableCell>
+        <TableCell align="center">{props.item.original_title}</TableCell>
+        <TableCell align="center">{props.item.overview}</TableCell>
+
         <TableCell align="center">
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Button variant="outlined" color="secondary" size="small" onClick={() => handleDeleteClick(props.item.id)}>
@@ -303,9 +402,15 @@ const Tickets = () => {
   const [statusTicket, setStatusTicket] = React.useState('ALL');
   React.useEffect(() => {
     document.title = 'Menu Tickets';
-    getAllTickets();
+    handleGetTable1();
   }, []);
-  const [orderData, setOrderData] = React.useState([]);
+  // const [orderData, setOrderData] = React.useState([]);
+
+  // Multi Table
+  const [button, setButton] = useState('Table 1');
+  const [table1, setTable1] = useState([]);
+  const [table2, setTable2] = useState([]);
+  const [table3, setTable3] = useState([]);
 
   const ToggleButton = styled(MuiToggleButton)({
     '&.Mui-selected, &.Mui-selected:hover': {
@@ -335,17 +440,43 @@ const Tickets = () => {
     setPage(0);
   };
 
-  const getAllTickets = async () => {
+  // const getAllTickets = async () => {
+  //   try {
+  //     const res = await axios({
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: localStorage.getItem('access_token'),
+  //       },
+  //       url: `https://643437481c5ed06c9592229a.mockapi.io/api/v1/FormOrder`,
+  //     });
+  //     setOrderData(res.data);
+  //     console.log(res.data.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const handleGetTable1 = async (status) => {
     try {
       const res = await axios({
         method: 'GET',
-        headers: {
-          Authorization: localStorage.getItem('access_token'),
-        },
-        url: `https://643437481c5ed06c9592229a.mockapi.io/api/v1/FormOrder`,
+        url: `https://api.themoviedb.org/3/discover/movie?api_key=7076af95ae7613e66826b21fe0031742&page=1`,
       });
-      setOrderData(res.data);
-      console.log(res.data.data);
+      setTable1(res.data.results);
+      console.log(res.data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleGetTable2 = async () => {
+    try {
+      const res = await axios({
+        method: 'GET',
+        url: `https://api.themoviedb.org/3/discover/movie?api_key=7076af95ae7613e66826b21fe0031742&page=2`,
+      });
+      setTable2(res.data.results);
+      console.log(res.data.results);
     } catch (error) {
       console.log(error);
     }
@@ -353,43 +484,18 @@ const Tickets = () => {
 
   return (
     <Container>
+      <ToggleButtonGroup value={button} exclusive onChange={(event, value) => setButton(value)}>
+        <ToggleButton value="Table 1" onClick={handleGetTable1}>
+          Table 1
+        </ToggleButton>
+        <ToggleButton value="Table 2" onClick={handleGetTable2}>
+          Table 2
+        </ToggleButton>
+      </ToggleButtonGroup>
+      {button}
+
       <div className="induk-toglee">
         <Grid container spacing={2}>
-          <Grid item xs={12} md={6} xl={4} className="induk-togle1">
-            <ToggleButtonGroup
-              value={statusTicket}
-              color="primary"
-              exclusive
-              onChange={(event, value) => {
-                if (value) {
-                  setStatusTicket(value);
-                }
-              }}
-              sx={{
-                // border: '1px solid #1F305C',
-                [theme.breakpoints.down('sm')]: {
-                  height: '35px !important',
-                },
-              }}
-            >
-              <ToggleButton value="ALL" sx={{ border: '1px solid rgba(0, 0, 0, 0.2)' }}>
-                ALL
-              </ToggleButton>
-              <ToggleButton value="Selected" sx={{ border: '1px solid rgba(0, 0, 0, 0.2)' }}>
-                Selected
-              </ToggleButton>
-              <ToggleButton value="To-Do" sx={{ border: '1px solid rgba(0, 0, 0, 0.2)' }}>
-                To-Do
-              </ToggleButton>
-              <ToggleButton value="In-Progress" sx={{ border: '1px solid rgba(0, 0, 0, 0.2)' }}>
-                In-Progress
-              </ToggleButton>
-              <ToggleButton value="Done" sx={{ border: '1px solid rgba(0, 0, 0, 0.2)' }}>
-                Done
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </Grid>
-
           <Grid item md={6} xl={6} sm={6} className="induk-togle2">
             <Link to="/createTickets" style={{ textDecoration: 'none', color: 'black' }}>
               <Button
@@ -420,92 +526,195 @@ const Tickets = () => {
         </Grid>
       </div>
 
-      <TableContainer sx={{ maxHeight: rowsPerPage !== 10 ? 800 : 'none' }}>
-        <Table stickyHeader sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
-          {/* Table Header */}
-          <TableHead>
-            <TableRow>
-              {/* {rowsPerPage.filter((e)=>{
+      {button !== 'Table 1' ? null : (
+        <>
+          <TableContainer sx={{ maxHeight: rowsPerPage !== 10 ? 800 : 'none' }}>
+            <Table stickyHeader sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
+              {/* Table Header */}
+              <TableHead>
+                <TableRow>
+                  {/* {rowsPerPage.filter((e)=>{
              return statusTicket==='ALL'?true: e.status===statusTicket 
             }
             )  */}
-              {headCells.map((headCell) => (
-                <TableCell
-                  key={headCell.id}
-                  align={headCell.numeric ? 'center' : 'center'}
-                  sortDirection={orderBy === headCell.id ? order : false}
-                >
-                  <TableSortLabel
-                    active={orderBy === headCell.id}
-                    direction={orderBy === headCell.id ? order : 'asc'}
-                    onClick={(event) => {
-                      handleRequestSort(event, headCell.id);
-                    }}
-                    style={{ fontWeight: 'bold' }}
-                  >
-                    {headCell.label}
-                  </TableSortLabel>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
+                  {headCells.map((headCell) => (
+                    <TableCell
+                      key={headCell.id}
+                      align={headCell.numeric ? 'center' : 'center'}
+                      sortDirection={orderBy === headCell.id ? order : false}
+                    >
+                      <TableSortLabel
+                        active={orderBy === headCell.id}
+                        direction={orderBy === headCell.id ? order : 'asc'}
+                        onClick={(event) => {
+                          handleRequestSort(event, headCell.id);
+                        }}
+                        style={{ fontWeight: 'bold' }}
+                      >
+                        {headCell.label}
+                      </TableSortLabel>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
 
-          {/* Table Content */}
-          <TableBody>
-            {orderData.length === 0
-              ? null
-              : stableSort(
-                  orderData.filter((e) => {
-                    // return true
-                    return statusTicket === 'ALL' ? true : e.status === statusTicket;
-                    // if(e.status===statusTicket)
-                  }),
-                  getComparator(order, orderBy)
-                )
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((rowItem, index) => {
-                    return (
-                      <RowItem key={rowItem.code} item={rowItem} orderData={orderData} getAllTickets={getAllTickets} />
-                    );
-                  })}
-          </TableBody>
-        </Table>
-      </TableContainer>
+              {/* Table Content */}
+              <TableBody>
+                {table1.length === 0
+                  ? null
+                  : stableSort(
+                      table1.filter((e) => {
+                        // return true
+                        return statusTicket === 'ALL' ? true : e.status === statusTicket;
+                        // if(e.status===statusTicket)
+                      }),
+                      getComparator(order, orderBy)
+                    )
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map((rowItem, index) => {
+                        return (
+                          <RowItemTable1
+                            key={rowItem.code}
+                            item={rowItem}
+                            orderData={table1}
+                            getAllTickets={handleGetTable1}
+                          />
+                        );
+                      })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          {/* // Table Pagination */}
+          <Box
+            sx={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              [theme.breakpoints.down('sm')]: {
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+              },
+            }}
+          >
+            <span>
+              <Button sx={{ width: 'max-content' }}>Pagination 1 (1-100)</Button>
+            </span>
+            <TablePagination
+              rowsPerPageOptions={[10, 25, 50, 100]}
+              component="div"
+              count={table1.length === 0 ? null : table1.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+                [theme.breakpoints.up('sm')]: { justifyContent: 'right' },
+              }}
+            />
+          </Box>
+        </>
+      )}
 
-      {/* Table Pagination */}
-      <Box
-        sx={{
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          [theme.breakpoints.down('sm')]: {
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          },
-        }}
-      >
-        <span>
-          <Button sx={{ width: 'max-content' }}>Pagination 1 (1-100)</Button>
-        </span>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 50, 100]}
-          component="div"
-          count={orderData.length === 0 ? null : orderData.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            width: '100%',
-            [theme.breakpoints.up('sm')]: { justifyContent: 'right' },
-          }}
-        />
-      </Box>
+      {button !== 'Table 2' ? null : (
+        <>
+          <TableContainer sx={{ maxHeight: rowsPerPage !== 10 ? 800 : 'none' }}>
+            <Table stickyHeader sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
+              {/* Table Header */}
+              <TableHead>
+                <TableRow>
+                  {/* {rowsPerPage.filter((e)=>{
+             return statusTicket==='ALL'?true: e.status===statusTicket 
+            }
+            )  */}
+                  {headCells.map((headCell) => (
+                    <TableCell
+                      key={headCell.id}
+                      align={headCell.numeric ? 'center' : 'center'}
+                      sortDirection={orderBy === headCell.id ? order : false}
+                    >
+                      <TableSortLabel
+                        active={orderBy === headCell.id}
+                        direction={orderBy === headCell.id ? order : 'asc'}
+                        onClick={(event) => {
+                          handleRequestSort(event, headCell.id);
+                        }}
+                        style={{ fontWeight: 'bold' }}
+                      >
+                        {headCell.label}
+                      </TableSortLabel>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+
+              {/* Table Content */}
+              <TableBody>
+                {table2.length === 0
+                  ? null
+                  : stableSort(
+                      table2.filter((e) => {
+                        // return true
+                        return statusTicket === 'ALL' ? true : e.status === statusTicket;
+                        // if(e.status===statusTicket)
+                      }),
+                      getComparator(order, orderBy)
+                    )
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map((rowItem, index) => {
+                        return (
+                          <RowItemTable2
+                            key={rowItem.code}
+                            item={rowItem}
+                            orderData={table2}
+                            getAllTickets={handleGetTable2}
+                          />
+                        );
+                      })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          {/* // Table Pagination */}
+          <Box
+            sx={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              [theme.breakpoints.down('sm')]: {
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+              },
+            }}
+          >
+            <span>
+              <Button sx={{ width: 'max-content' }}>Pagination 1 (1-100)</Button>
+            </span>
+            <TablePagination
+              rowsPerPageOptions={[10, 25, 50, 100]}
+              component="div"
+              count={table2.length === 0 ? null : table2.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+                [theme.breakpoints.up('sm')]: { justifyContent: 'right' },
+              }}
+            />
+          </Box>
+        </>
+      )}
     </Container>
   );
 };
