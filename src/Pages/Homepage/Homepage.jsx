@@ -138,6 +138,14 @@ function Homepage() {
       >
         Multi Table
       </button>
+
+      <button
+        onClick={() => {
+          navigate('/FormValidation');
+        }}
+      >
+        Form Validation
+      </button>
     </Fragment>
   );
 }

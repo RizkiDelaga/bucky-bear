@@ -18,6 +18,7 @@ import Tickets from './Pages/Tickets';
 import CreateTickets from './Pages/CreateTickets';
 import EditTickets from './Pages/EditTickets';
 import MultiTable from './Pages/MultiTable';
+import FormValidation from './Pages/FormValidation';
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
             <Route path="CreateTickets" element={<CreateTickets />} />
             <Route path="EditTickets/:id" element={<EditTickets />} />
             <Route path="MultiTable" element={<MultiTable />} />
+            <Route path="FormValidation" element={<FormValidation />} />
             
             
             <Route element={<HandleLoginSuccessfully/>}>
