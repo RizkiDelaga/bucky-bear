@@ -31,6 +31,7 @@ function FormValidation() {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [loadingHandle, setLoadingHandle] = useState(false);
 
   const AlertValidation = () => {
     return (
@@ -38,6 +39,21 @@ function FormValidation() {
         <Alert severity="error">This is an error alert — check it out!</Alert>
       </div>
     );
+  };
+
+  const handleGetTable3 = async () => {
+    setLoadingHandle(!loadingHandle);
+    try {
+      const res = await axios({
+        method: 'GET',
+        url: `https://api-tugasakhir-lulu-laundry-git-develop-raihaniqbalpasya.vercel.app/api/v1/jenislayanan`,
+      });
+
+      console.log(res.data.results);
+      setLoadingHandle((state) => !state);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -48,8 +64,7 @@ function FormValidation() {
         onSubmit={(e) => {
           e.preventDefault();
           console.log('click');
-          if (formValidation.numberOnly) {
-          }
+          handleGetTable3();
         }}
       >
         <div style={{ display: 'flex' }}>
@@ -182,7 +197,7 @@ function FormValidation() {
 
           // }}
         >
-          Validation this Form
+          {loadingHandle ? 'loadingHandle' : 'Validation this Form'}
         </button>
       </form>
     </Fragment>
